@@ -80,7 +80,7 @@ public class GuestService {
         guest.setDetails(guestWaitingDTO.getDetails());
         guest.setMarket(market);
         Integer n = guestQueryRepository.findHighestNumberOfGuestNumber(guestWaitingDTO.getMarket_id()) + 1;
-        guest.setGuest_number(n);
+        guest.setGnumber(n);
 
         GuestCookieDTO guestCookieDTO = new GuestCookieDTO();
         guestCookieDTO.setToken(String.valueOf(uuid));

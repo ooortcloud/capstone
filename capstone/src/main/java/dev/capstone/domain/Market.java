@@ -34,8 +34,8 @@ public class Market {
     @Column(name = "market_name", nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private String market_location;
+    @Column(name ="market_location", nullable = false)
+    private String location;
 
     @PrePersist
     public void prePersist(){

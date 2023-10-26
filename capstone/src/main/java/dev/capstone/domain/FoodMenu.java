@@ -21,7 +21,8 @@ import java.util.Map;
 public class FoodMenu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer menu_id;
+    @Column(name = "menu_id")
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "market_id")
@@ -31,14 +32,16 @@ public class FoodMenu {
     private List<MenuReview> menuReviews = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
-    private Level menu_type;
-    private String menu_image;  // 외부 DB에 저장한 경로를 저장 -> DTO에 넣을 것은 아닌듯.
+    @Column(name = "menu_type")
+    private Level type;
+    @Column(name = "menu_image")
+    private String image;  // 외부 DB에 저장한 경로를 저장 -> DTO에 넣을 것은 아닌듯.
 
-    @Column(nullable = false)
-    private String menu_name;
+    @Column(name = "menu_name", nullable = false)
+    private String name;
 
-    @Column(nullable = false)
-    private String menu_description;
+    @Column(name = "menu_description", nullable = false)
+    private String description;
 
     @Column(nullable = false)
     private Float price;

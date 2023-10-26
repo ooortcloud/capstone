@@ -17,7 +17,8 @@ public class FoodReview {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer review_id;
+    @Column(name = "review_id")
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "market_id")

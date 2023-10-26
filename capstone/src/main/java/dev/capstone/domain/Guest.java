@@ -38,8 +38,8 @@ public class Guest {
     @Column(name = "table_number")
     private Integer table;
 
-    @Column(nullable = false)
-    private Integer guest_number;
+    @Column(name = "guest_number", nullable = false)
+    private Integer gnumber;
 
     @PrePersist
     public void prePersist(){

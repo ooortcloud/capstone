@@ -26,7 +26,7 @@ public class QGuest extends EntityPathBase<Guest> {
 
     public final StringPath details = createString("details");
 
-    public final NumberPath<Integer> guest_number = createNumber("guest_number", Integer.class);
+    public final NumberPath<Integer> gnumber = createNumber("gnumber", Integer.class);
 
     public final NumberPath<Integer> id = createNumber("id", Integer.class);
 

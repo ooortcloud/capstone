@@ -8,8 +8,6 @@ import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.PathInits;
-import dev.capstone.domain.QFoodMenu;
-import dev.capstone.domain.QFoodReview;
 
 
 /**
@@ -24,9 +22,9 @@ public class QMenuReview extends EntityPathBase<MenuReview> {
 
     public static final QMenuReview menuReview = new QMenuReview("menuReview");
 
-    public final QFoodMenu foodMenu;
+    public final dev.capstone.domain.QFoodMenu foodMenu;
 
-    public final QFoodReview foodReview;
+    public final dev.capstone.domain.QFoodReview foodReview;
 
     public final NumberPath<Integer> menureview_id = createNumber("menureview_id", Integer.class);
 
@@ -48,8 +46,8 @@ public class QMenuReview extends EntityPathBase<MenuReview> {
 
     public QMenuReview(Class<? extends MenuReview> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.foodMenu = inits.isInitialized("foodMenu") ? new QFoodMenu(forProperty("foodMenu"), inits.get("foodMenu")) : null;
-        this.foodReview = inits.isInitialized("foodReview") ? new QFoodReview(forProperty("foodReview"), inits.get("foodReview")) : null;
+        this.foodMenu = inits.isInitialized("foodMenu") ? new dev.capstone.domain.QFoodMenu(forProperty("foodMenu"), inits.get("foodMenu")) : null;
+        this.foodReview = inits.isInitialized("foodReview") ? new dev.capstone.domain.QFoodReview(forProperty("foodReview"), inits.get("foodReview")) : null;
     }
 
 }

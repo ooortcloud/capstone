@@ -8,7 +8,6 @@ import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.PathInits;
-import dev.capstone.domain.jointable.QMenuReview;
 
 
 /**
@@ -23,27 +22,27 @@ public class QFoodMenu extends EntityPathBase<FoodMenu> {
 
     public static final QFoodMenu foodMenu = new QFoodMenu("foodMenu");
 
+    public final StringPath description = createString("description");
+
     public final NumberPath<Float> discount_price = createNumber("discount_price", Float.class);
+
+    public final NumberPath<Integer> id = createNumber("id", Integer.class);
+
+    public final StringPath image = createString("image");
 
     public final EnumPath<dev.capstone.domain.enumerated.YesOrNo> in_stock = createEnum("in_stock", dev.capstone.domain.enumerated.YesOrNo.class);
 
     public final QMarket market;
 
-    public final StringPath menu_description = createString("menu_description");
+    public final ListPath<dev.capstone.domain.jointable.MenuReview, dev.capstone.domain.jointable.QMenuReview> menuReviews = this.<dev.capstone.domain.jointable.MenuReview, dev.capstone.domain.jointable.QMenuReview>createList("menuReviews", dev.capstone.domain.jointable.MenuReview.class, dev.capstone.domain.jointable.QMenuReview.class, PathInits.DIRECT2);
 
-    public final NumberPath<Integer> menu_id = createNumber("menu_id", Integer.class);
-
-    public final StringPath menu_image = createString("menu_image");
-
-    public final StringPath menu_name = createString("menu_name");
-
-    public final EnumPath<dev.capstone.domain.enumerated.Level> menu_type = createEnum("menu_type", dev.capstone.domain.enumerated.Level.class);
-
-    public final ListPath<dev.capstone.domain.jointable.MenuReview, QMenuReview> menuReviews = this.<dev.capstone.domain.jointable.MenuReview, QMenuReview>createList("menuReviews", dev.capstone.domain.jointable.MenuReview.class, QMenuReview.class, PathInits.DIRECT2);
+    public final StringPath name = createString("name");
 
     public final MapPath<String, Object, SimplePath<Object>> options = this.<String, Object, SimplePath<Object>>createMap("options", String.class, Object.class, SimplePath.class);
 
     public final NumberPath<Float> price = createNumber("price", Float.class);
+
+    public final EnumPath<dev.capstone.domain.enumerated.Level> type = createEnum("type", dev.capstone.domain.enumerated.Level.class);
 
     public QFoodMenu(String variable) {
         this(FoodMenu.class, forVariable(variable), INITS);

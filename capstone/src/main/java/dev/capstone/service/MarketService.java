@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -57,8 +58,8 @@ public class MarketService {
     }
     
     // 현재 이용 중인 guest들을 guest id로 조회
-    public Guest findGuestByGuestId(Integer guestId) {
-        return guestRepository.findByGuestId(guestId);
+    public Optional<Guest> findGuestByGuestId(Integer guestId) {
+        return guestRepository.findById(guestId);
     }
     
     // 전체 주문 목록 조회
@@ -94,7 +95,7 @@ public class MarketService {
 
     // 주문 처리
     public void approvedOrder(Integer guestNumber) {
-        orderListRepository.deleteByGuestNumber(guestNumber);
+        orderListRepository.deleteByGuestGnumber(guestNumber);
         // 사용자에게 승인되었음을 알림
     }
 
@@ -102,7 +103,7 @@ public class MarketService {
 
     // 주문 거부
     public void rejectOrder(GuestCookieDTO guestCookieDTO) {
-        orderListRepository.deleteByGuestNumber(guestCookieDTO.getGuest_number());
+        orderListRepository.deleteByGuestGnumber(guestCookieDTO.getGuest_number());
         // 사용자에게 거부되었음을 알림
     }
 

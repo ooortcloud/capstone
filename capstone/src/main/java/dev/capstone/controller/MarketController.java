@@ -6,7 +6,6 @@ import dev.capstone.domain.Market;
 import dev.capstone.domain.enumerated.Level;
 import dev.capstone.dto.FoodMenuSaveDTO;
 import dev.capstone.service.FoodMenuService;
-import dev.capstone.service.GuestService;
 import dev.capstone.service.MarketService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -100,9 +98,9 @@ public class MarketController {
 
     private FoodMenu mappingHelper(FoodMenuSaveDTO requestedInfo) {
         FoodMenu foodMenu = new FoodMenu();
-        foodMenu.setMenu_type(Level.valueOf(requestedInfo.getMenu_type()));
-        foodMenu.setMenu_name(requestedInfo.getMenu_name());
-        foodMenu.setMenu_description(requestedInfo.getMenu_description());
+        foodMenu.setType(Level.valueOf(requestedInfo.getMenu_type()));
+        foodMenu.setName(requestedInfo.getMenu_name());
+        foodMenu.setDescription(requestedInfo.getMenu_description());
         foodMenu.setPrice(requestedInfo.getPrice());
         foodMenu.setOptions(requestedInfo.getOptions());
 

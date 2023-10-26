@@ -8,7 +8,6 @@ import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.PathInits;
-import dev.capstone.domain.QGuest;
 
 
 /**
@@ -23,7 +22,7 @@ public class QOrderList extends EntityPathBase<OrderList> {
 
     public static final QOrderList orderList = new QOrderList("orderList");
 
-    public final QGuest guest;
+    public final dev.capstone.domain.QGuest guest;
 
     public final NumberPath<Integer> id = createNumber("id", Integer.class);
 
@@ -49,7 +48,7 @@ public class QOrderList extends EntityPathBase<OrderList> {
 
     public QOrderList(Class<? extends OrderList> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.guest = inits.isInitialized("guest") ? new QGuest(forProperty("guest")) : null;
+        this.guest = inits.isInitialized("guest") ? new dev.capstone.domain.QGuest(forProperty("guest"), inits.get("guest")) : null;
         this.market = inits.isInitialized("market") ? new dev.capstone.domain.QMarket(forProperty("market"), inits.get("market")) : null;
     }
 

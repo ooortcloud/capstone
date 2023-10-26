@@ -8,7 +8,6 @@ import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.PathInits;
-import dev.capstone.domain.jointable.QMenuReview;
 
 
 /**
@@ -25,11 +24,11 @@ public class QFoodReview extends EntityPathBase<FoodReview> {
 
     public final StringPath body = createString("body");
 
+    public final NumberPath<Integer> id = createNumber("id", Integer.class);
+
     public final QMarket market;
 
-    public final ListPath<dev.capstone.domain.jointable.MenuReview, QMenuReview> menuReviews = this.<dev.capstone.domain.jointable.MenuReview, QMenuReview>createList("menuReviews", dev.capstone.domain.jointable.MenuReview.class, QMenuReview.class, PathInits.DIRECT2);
-
-    public final NumberPath<Integer> review_id = createNumber("review_id", Integer.class);
+    public final ListPath<dev.capstone.domain.jointable.MenuReview, dev.capstone.domain.jointable.QMenuReview> menuReviews = this.<dev.capstone.domain.jointable.MenuReview, dev.capstone.domain.jointable.QMenuReview>createList("menuReviews", dev.capstone.domain.jointable.MenuReview.class, dev.capstone.domain.jointable.QMenuReview.class, PathInits.DIRECT2);
 
     public final NumberPath<Float> stars = createNumber("stars", Float.class);
 

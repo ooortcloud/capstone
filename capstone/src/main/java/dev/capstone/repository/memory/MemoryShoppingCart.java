@@ -1,8 +1,11 @@
 package dev.capstone.repository.memory;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class MemoryShoppingCart {
 
     private Map<String, Map<String, Integer>> shoppingCart = new HashMap<>();  // <token 정보, 주문 정보>

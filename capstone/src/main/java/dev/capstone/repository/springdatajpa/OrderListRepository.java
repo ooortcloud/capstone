@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderListRepository extends JpaRepository<OrderList, Integer> {
 
-    void deleteByGuestNumber(Integer guestNumber);
+    void deleteByGuestGnumber(Integer guestNumber);
 }
