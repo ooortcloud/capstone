@@ -20,11 +20,7 @@ public class FoodReview {
     @Column(name = "review_id")
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "market_id")
-    private Market market;
-
-    @OneToMany(mappedBy = "foodReview")
+    @OneToMany(mappedBy = "foodReview")  // 양방향(노예)
     private List<MenuReview> menuReviews = new ArrayList<>();
 
     @Column(nullable = false)

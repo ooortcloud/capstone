@@ -4,7 +4,6 @@ import dev.capstone.domain.FoodMenu;
 import dev.capstone.domain.jointable.OrderList;
 import dev.capstone.dto.GuestCookieDTO;
 import dev.capstone.dto.GuestWaitingDTO;
-import dev.capstone.service.FoodMenuService;
 import dev.capstone.service.GuestService;
 import dev.capstone.service.MarketService;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +22,6 @@ import java.util.Map;
 public class GuestController {  // 가장 Validation에 신경써야 하는 컨트롤러
 
     private final GuestService guestService;
-    private final FoodMenuService foodMenuService;
     private final MarketService marketService;
 
     // ========================================================================
@@ -54,9 +52,9 @@ public class GuestController {  // 가장 Validation에 신경써야 하는 컨�
     // ========================================================================
 
     // 특정 매장의 전체 메뉴 조회
-    @GetMapping("/findAll")
+    @GetMapping("/findAllMenusInMarket")
     public ResponseEntity<String> findByMarketId(@RequestParam("id") Integer marketId) {
-        List<FoodMenu> menus = foodMenuService.findAllByMarketId(marketId);
+        List<FoodMenu> menus = marketService.findAllByMarketId(marketId);
         log.info(menus.toString());
         return ResponseEntity.ok("200 OK");
     }
@@ -64,7 +62,7 @@ public class GuestController {  // 가장 Validation에 신경써야 하는 컨�
     // 등급별 메뉴 조회
     @GetMapping("/findByLevel")
     public ResponseEntity<String> findByLevel(@RequestParam("id") Integer marketId, @RequestParam("level") String level) {
-        List<FoodMenu> menus = foodMenuService.findByLevel(marketId, level);
+        List<FoodMenu> menus = marketService.findByLevel(marketId, level);
         log.info(menus.toString());
         return ResponseEntity.ok("200 OK");
     }

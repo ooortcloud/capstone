@@ -16,13 +16,13 @@ public class MenuReview {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer menureview_id;
+    private Integer menuReview_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)  // 양방향(주인)
     @JoinColumn(name = "menu_id")
     private FoodMenu foodMenu;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)  // 양방향(주인)
     @JoinColumn(name = "review_id")
     private FoodReview foodReview;
 }

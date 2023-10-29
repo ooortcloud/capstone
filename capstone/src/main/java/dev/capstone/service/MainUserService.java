@@ -1,13 +1,13 @@
 package dev.capstone.service;
 
 import dev.capstone.domain.MainUser;
+import dev.capstone.domain.Market;
 import dev.capstone.repository.springdatajpa.MainUserRepository;
 import dev.capstone.repository.querydsl.MainUserQueryRepository;
+import dev.capstone.repository.springdatajpa.MarketRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -16,6 +16,7 @@ public class MainUserService {
 
     private final MainUserRepository mainUserRepository;
     private final MainUserQueryRepository mainUserQueryRepository;
+    private final MarketRepository marketRepository;
 
 
     // ========================================================================
@@ -23,6 +24,11 @@ public class MainUserService {
     // 회원가입
     public MainUser save(MainUser mainUser) {
         return mainUserRepository.save(mainUser);
+    }
+
+    // 매장 등록
+    public Market addMarket(Market market) {
+        return marketRepository.save(market);
     }
 
 

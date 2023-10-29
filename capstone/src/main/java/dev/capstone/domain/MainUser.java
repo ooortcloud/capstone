@@ -30,6 +30,6 @@ public class MainUser {
     @Column(nullable = false)
     private String user_residence;
 
-    @OneToMany(mappedBy = "mainUser")
+    @OneToMany(mappedBy = "mainUser")  // 양방향(노예)
     private List<Market> markets = new ArrayList<>();
 }

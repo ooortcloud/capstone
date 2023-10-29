@@ -43,9 +43,9 @@ public class MarketRepositoryTest {
     void createMarket() {
         MainUser mainUser = new MainUser(null, "test", "1234", "홍길동", "장막시티", null);
         mainUserRepository.save(mainUser);
-        Market market = new Market(null, YesOrNo.No, mainUser, null, null, "보영만두", "축복시티");
+        Market market = new Market(null, YesOrNo.No, mainUser, null, null, null, "보영만두", "축복시티");
         marketRepository.save(market);
-        Market market2 = new Market(null, YesOrNo.No, mainUser, null, null, "상남자치킨", "축복시티");
+        Market market2 = new Market(null, YesOrNo.No, mainUser, null, null, null, "상남자치킨", "축복시티");
         marketRepository.save(market2);
         List<Market> test = new ArrayList<>();
         test.add(market);
@@ -61,9 +61,9 @@ public class MarketRepositoryTest {
     void findByNameTest(){
         MainUser mainUser = new MainUser(null, "test", "1234", "홍길동", "장막시티", null);
         mainUserRepository.save(mainUser);
-        Market market = new Market(null, YesOrNo.No, mainUser, null, null, "보영만두", "축복시티");
+        Market market = new Market(null, YesOrNo.No, mainUser, null, null, null, "보영만두", "축복시티");
         marketRepository.save(market);
-        Market market2 = new Market(null, YesOrNo.No, mainUser, null, null, "상남자치킨", "축복시티");
+        Market market2 = new Market(null, YesOrNo.No, mainUser, null, null, null, "상남자치킨", "축복시티");
         marketRepository.save(market2);
 
         assertThat(marketRepository.findByName("보영만두").get(0)).isEqualTo(market);
@@ -74,9 +74,9 @@ public class MarketRepositoryTest {
     void findAllByUser_idTest() {
         MainUser mainUser = new MainUser(null, "test", "1234", "홍길동", "장막시티", null);
         mainUserRepository.save(mainUser);
-        Market market = new Market(null, YesOrNo.No, mainUser, null, null, "보영만두", "축복시티");
+        Market market = new Market(null, YesOrNo.No, mainUser, null, null, null, "보영만두", "축복시티");
         marketRepository.save(market);
-        Market market2 = new Market(null, YesOrNo.No, mainUser, null, null, "상남자치킨", "축복시티");
+        Market market2 = new Market(null, YesOrNo.No, mainUser, null, null, null, "상남자치킨", "축복시티");
         marketRepository.save(market2);
         List<Market> test = new ArrayList<>();
         test.add(market);
@@ -91,9 +91,9 @@ public class MarketRepositoryTest {
     void findByCertifiedTest() {
         MainUser mainUser = new MainUser(null, "test", "1234", "홍길동", "장막시티", null);
         mainUserRepository.save(mainUser);
-        Market market = new Market(null, YesOrNo.No, mainUser, null, null, "보영만두", "축복시티");
+        Market market = new Market(null, YesOrNo.No, mainUser, null, null, null, "보영만두", "축복시티");
         marketRepository.save(market);
-        Market market2 = new Market(null, YesOrNo.No, mainUser, null, null, "상남자치킨", "축복시티");
+        Market market2 = new Market(null, YesOrNo.No, mainUser, null, null, null, "상남자치킨", "축복시티");
         marketRepository.save(market2);
         List<Market> test = new ArrayList<>();
         test.add(market);
@@ -109,7 +109,7 @@ public class MarketRepositoryTest {
     void certifiedSucceedTest() {
         MainUser mainUser = new MainUser(null, "test", "1234", "홍길동", "장막시티", null);
         mainUserRepository.save(mainUser);
-        Market market = new Market(null, YesOrNo.No, mainUser, null, null, "보영만두", "축복시티");
+        Market market = new Market(null, YesOrNo.No, mainUser, null, null, null, "보영만두", "축복시티");
         marketRepository.save(market);
 
         marketQueryRepository.certifiedSucceed(marketRepository.findByName("보영만두").get(0).getId());

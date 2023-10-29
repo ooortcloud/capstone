@@ -18,9 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -52,7 +50,7 @@ public class OrderListRepositoryTest {
     void createOrderTest() {
         MainUser mainUser = new MainUser(null, "test", "1234", "홍길동", "장막시티", null);
         mainUserRepository.save(mainUser);
-        Market market = new Market(null, YesOrNo.No, mainUser, null, null, "홍콩반점", "장막시티");
+        Market market = new Market(null, YesOrNo.No, mainUser, null, null, null, "홍콩반점", "장막시티");
         marketRepository.save(market);
 
         Guest guest = new Guest();
@@ -62,9 +60,7 @@ public class OrderListRepositoryTest {
         guestWaitingDTO.setNumberOfPeople(1);
         guestWaitingDTO.setMarket_id(marketRepository.findByName("홍콩반점").get(0).getId());
         guestWaitingDTO.setDetails("없습니다.");
-
         mappingHelper(guestWaitingDTO, guest, guest.getToken());
-
         guestRepository.save(guest);
 
         Map<String, Integer> orderMap = new HashMap<>();
@@ -83,11 +79,81 @@ public class OrderListRepositoryTest {
     @Test
     @DisplayName("전체 주문 목록 조회")
     void findAllOrderList() {
+        MainUser mainUser = new MainUser(null, "test", "1234", "홍길동", "장막시티", null);
+        mainUserRepository.save(mainUser);
+        Market market = new Market(null, YesOrNo.No, mainUser, null, null, null, "홍콩반점", "장막시티");
+        marketRepository.save(market);
 
+        Guest guest1 = new Guest();
+        String token1 = UUID.randomUUID().toString();
+        guest1.setToken(token1);
+        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO();
+        guestWaitingDTO.setNumberOfPeople(1);
+        guestWaitingDTO.setMarket_id(marketRepository.findByName("홍콩반점").get(0).getId());
+        guestWaitingDTO.setDetails("없습니다.");
+        mappingHelper(guestWaitingDTO, guest1, guest1.getToken());
+        guestRepository.save(guest1);
+
+        Guest guest2 = new Guest();
+        String token2 = UUID.randomUUID().toString();
+        guest2.setToken(token2);
+        GuestWaitingDTO guestWaitingDTO2 = new GuestWaitingDTO();
+        guestWaitingDTO2.setNumberOfPeople(1);
+        guestWaitingDTO2.setMarket_id(marketRepository.findByName("홍콩반점").get(0).getId());
+        guestWaitingDTO2.setDetails("없습니다.");
+        mappingHelper(guestWaitingDTO2, guest2, guest2.getToken());
+        guestRepository.save(guest2);
+
+        Map<String, Integer> orderMap1 = new HashMap<>();
+        orderMap1.put("핫도그", 3);
+        orderMap1.put("떡볶이", 2);
+        Map<String, Integer> orderMap2 = new HashMap<>();
+        orderMap1.put("핫도그", 1);
+        orderMap1.put("콜라", 1);
+
+        OrderList orderList1 = new OrderList(null, guest1, market, orderMap1);
+        OrderList orderList2 = new OrderList(null, guest2, market, orderMap2);
+        orderListRepository.save(orderList1);
+        orderListRepository.save(orderList2);
+        List<OrderList> test = new ArrayList<>();
+        test.add(orderList1);
+        test.add(orderList2);
+
+        assertThat(orderListRepository.findAll()).isEqualTo(test);
     }
 
     // ========================================================================
 
+    @Test
+    @DisplayName("주문 처리 || 주문 거부")
+    void approvedOrderTest() {
+        MainUser mainUser = new MainUser(null, "test", "1234", "홍길동", "장막시티", null);
+        mainUserRepository.save(mainUser);
+        Market market = new Market(null, YesOrNo.No, mainUser, null, null, null, "홍콩반점", "장막시티");
+        marketRepository.save(market);
+
+        Guest guest = new Guest();
+        String token = UUID.randomUUID().toString();
+        guest.setToken(token);
+        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO();
+        guestWaitingDTO.setNumberOfPeople(1);
+        guestWaitingDTO.setMarket_id(marketRepository.findByName("홍콩반점").get(0).getId());
+        guestWaitingDTO.setDetails("없습니다.");
+        mappingHelper(guestWaitingDTO, guest, guest.getToken());
+        guestRepository.save(guest);
+
+        Map<String, Integer> orderMap = new HashMap<>();
+        orderMap.put("핫도그", 3);
+        orderMap.put("떡볶이", 2);
+
+        OrderList orderList = new OrderList(null, guestRepository.findByGnumber(1), market, orderMap);
+        orderListRepository.save(orderList);
+
+        orderListRepository.deleteByGuestGnumber(guest.getGnumber());
+        List<OrderList> test = new ArrayList<>();
+
+        assertThat(orderListRepository.findAll()).isEqualTo(test);
+    }
 
     // ========================================================================
 

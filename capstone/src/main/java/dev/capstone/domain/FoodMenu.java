@@ -24,11 +24,11 @@ public class FoodMenu {
     @Column(name = "menu_id")
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)  // 양방향(주인)
     @JoinColumn(name = "market_id")
     private Market market;
 
-    @OneToMany(mappedBy = "foodMenu")
+    @OneToMany(mappedBy = "foodMenu")  // 양방향(노예)
     private List<MenuReview> menuReviews = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)

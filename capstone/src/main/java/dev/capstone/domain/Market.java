@@ -24,7 +24,7 @@ public class Market {
     @Enumerated(EnumType.STRING)
     private YesOrNo certified;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)  // 양방향(주인)
     @JoinColumn(name = "user_id", nullable = false)
     private MainUser mainUser;
 
@@ -33,6 +33,9 @@ public class Market {
 
     @OneToMany(mappedBy = "market", orphanRemoval = true)  // 양방향(노예)
     private List<OrderList> orderLists = new ArrayList<>();
+
+    @OneToMany(mappedBy = "market")  // 양방향(노예)
+    private List<FoodMenu> foodMenus = new ArrayList<>();
 
     @Column(name = "market_name", nullable = false)
     private String name;

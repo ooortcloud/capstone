@@ -51,7 +51,7 @@ public class GuestRepositoryTest {
     void createGuestTest() {
         MainUser mainUser = new MainUser(null, "test", "1234", "홍길동", "장막시티", null);
         mainUserRepository.save(mainUser);
-        Market market = new Market(null, YesOrNo.No, mainUser,null,  null, "홍콩반점", "장막시티");
+        Market market = new Market(null, YesOrNo.No, mainUser, null, null,  null, "홍콩반점", "장막시티");
         marketRepository.save(market);
 
         Guest guest = new Guest();
@@ -90,7 +90,7 @@ public class GuestRepositoryTest {
     void findAllGuestTest() {
         MainUser mainUser = new MainUser(null, "test", "1234", "홍길동", "장막시티", null);
         mainUserRepository.save(mainUser);
-        Market market = new Market(null, YesOrNo.No, mainUser, null,  null, "홍콩반점", "장막시티");
+        Market market = new Market(null, YesOrNo.No, mainUser, null, null,  null, "홍콩반점", "장막시티");
         marketRepository.save(market);
 
         Guest guest = new Guest();
@@ -107,7 +107,7 @@ public class GuestRepositoryTest {
 
         MainUser mainUser2 = new MainUser(null, "qwer", "5678", "이아리", "축복시티", null);
         mainUserRepository.save(mainUser2);
-        Market market2 = new Market(null, YesOrNo.No, mainUser2, null, null, "불맛나는떡볶이", "축복시티");
+        Market market2 = new Market(null, YesOrNo.No, mainUser2, null, null, null, "불맛나는떡볶이", "축복시티");
         marketRepository.save(market2);
 
         Guest guest2 = new Guest();
@@ -135,7 +135,7 @@ public class GuestRepositoryTest {
         // 웨이팅 게스트 생성
         MainUser mainUser = new MainUser(null, "test", "1234", "홍길동", "장막시티", null);
         mainUserRepository.save(mainUser);
-        Market market = new Market(null, YesOrNo.No, mainUser, null, null, "홍콩반점", "장막시티");
+        Market market = new Market(null, YesOrNo.No, mainUser, null, null, null, "홍콩반점", "장막시티");
         marketRepository.save(market);
 
         Guest guest = new Guest();
@@ -152,7 +152,7 @@ public class GuestRepositoryTest {
 
         MainUser mainUser2 = new MainUser(null, "qwer", "5678", "이아리", "축복시티", null);
         mainUserRepository.save(mainUser2);
-        Market market2 = new Market(null, YesOrNo.No, mainUser2, null, null, "불맛나는떡볶이", "축복시티");
+        Market market2 = new Market(null, YesOrNo.No, mainUser2, null, null, null, "불맛나는떡볶이", "축복시티");
         marketRepository.save(market2);
 
         Guest guest2 = new Guest();
@@ -177,7 +177,7 @@ public class GuestRepositoryTest {
     void inTableTest() {
         MainUser mainUser = new MainUser(null, "test", "1234", "홍길동", "장막시티", null);
         mainUserRepository.save(mainUser);
-        Market market = new Market(null, YesOrNo.No, mainUser, null, null, "홍콩반점", "장막시티");
+        Market market = new Market(null, YesOrNo.No, mainUser, null, null, null, "홍콩반점", "장막시티");
         marketRepository.save(market);
 
         Guest guest = new Guest();
@@ -202,7 +202,7 @@ public class GuestRepositoryTest {
     void updateApprovedByTokenTest() {
         MainUser mainUser = new MainUser(null, "test", "1234", "홍길동", "장막시티", null);
         mainUserRepository.save(mainUser);
-        Market market = new Market(null, YesOrNo.No, mainUser, null, null, "홍콩반점", "장막시티");
+        Market market = new Market(null, YesOrNo.No, mainUser, null, null, null, "홍콩반점", "장막시티");
         marketRepository.save(market);
 
         Guest guest = new Guest();

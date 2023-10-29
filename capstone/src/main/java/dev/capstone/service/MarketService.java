@@ -1,12 +1,15 @@
 package dev.capstone.service;
 
+import dev.capstone.domain.FoodMenu;
 import dev.capstone.domain.Guest;
 import dev.capstone.domain.Market;
 import dev.capstone.domain.jointable.OrderList;
 import dev.capstone.dto.GuestCookieDTO;
+import dev.capstone.repository.querydsl.FoodMenuQueryRepository;
 import dev.capstone.repository.querydsl.GuestQueryRepository;
 import dev.capstone.repository.querydsl.MarketQueryRepository;
 import dev.capstone.repository.querydsl.OrderListQueryRepository;
+import dev.capstone.repository.springdatajpa.FoodMenuRepository;
 import dev.capstone.repository.springdatajpa.GuestRepository;
 import dev.capstone.repository.springdatajpa.MarketRepository;
 import dev.capstone.repository.springdatajpa.OrderListRepository;
@@ -28,13 +31,15 @@ public class MarketService {
     private final GuestQueryRepository guestQueryRepository;
     private final OrderListRepository orderListRepository;
     private final OrderListQueryRepository orderListQueryRepository;
+    private final FoodMenuRepository foodMenuRepository;
+    private final FoodMenuQueryRepository foodMenuQueryRepository;
 
 
     // ========================================================================
 
-    // 매장 등록
-    public Market save(Market market) {
-        return marketRepository.save(market);
+    // 메뉴 추가
+    public FoodMenu addMenu(FoodMenu foodMenu) {
+        return foodMenuRepository.save(foodMenu);
     }
 
     // ========================================================================
@@ -59,7 +64,15 @@ public class MarketService {
         return orderListRepository.findAll();
     }
 
-    //
+    // 매장 아이디로 특정 매장의 전체 메뉴 조회 (단, 베스트/추천 메뉴 구분 표시 요구됨)
+    public List<FoodMenu> findAllByMarketId(Integer marketId) {
+        return foodMenuRepository.findAllByMarketId(marketId);
+    }
+
+    // 특정 매장의 Best 또는 Recommend 메뉴만 조희
+    public List<FoodMenu> findByLevel(Integer marketId, String level) {
+        return foodMenuQueryRepository.findMenuByLevel(marketId, level);
+    }
     
 
     // ========================================================================
@@ -73,6 +86,11 @@ public class MarketService {
     public void updateApprovedByGnumber(Integer gnumber) {
         guestQueryRepository.updateApprovedByGnumber(gnumber);
     }
+
+    // 메뉴 수정
+    public void updateMenu() {
+        
+    }
     
     // ========================================================================
 
@@ -83,18 +101,20 @@ public class MarketService {
         guestQueryRepository.deleteAllByApproved();
     }
 
-    // 주문 처리
+    // 주문 처리 또는 주문 거부
     public void approvedOrder(Integer guestNumber) {
         orderListRepository.deleteByGuestGnumber(guestNumber);
-        // 사용자에게 승인되었음을 알림
+        // 사용자에게 승인되었음을 알림 기능 추가
     }
-
-    // ========================================================================
 
     // 주문 거부
     public void rejectOrder(GuestCookieDTO guestCookieDTO) {
         orderListRepository.deleteByGuestGnumber(guestCookieDTO.getGnumber());
-        // 사용자에게 거부되었음을 알림
+        // 사용자에게 거부되었음을 알림 기능 추가
     }
+
+    
+    // ========================================================================
+
 
 }

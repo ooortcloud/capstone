@@ -26,7 +26,7 @@ public class QMenuReview extends EntityPathBase<MenuReview> {
 
     public final dev.capstone.domain.QFoodReview foodReview;
 
-    public final NumberPath<Integer> menureview_id = createNumber("menureview_id", Integer.class);
+    public final NumberPath<Integer> menuReview_id = createNumber("menuReview_id", Integer.class);
 
     public QMenuReview(String variable) {
         this(MenuReview.class, forVariable(variable), INITS);
@@ -47,7 +47,7 @@ public class QMenuReview extends EntityPathBase<MenuReview> {
     public QMenuReview(Class<? extends MenuReview> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.foodMenu = inits.isInitialized("foodMenu") ? new dev.capstone.domain.QFoodMenu(forProperty("foodMenu"), inits.get("foodMenu")) : null;
-        this.foodReview = inits.isInitialized("foodReview") ? new dev.capstone.domain.QFoodReview(forProperty("foodReview"), inits.get("foodReview")) : null;
+        this.foodReview = inits.isInitialized("foodReview") ? new dev.capstone.domain.QFoodReview(forProperty("foodReview")) : null;
     }
 
 }

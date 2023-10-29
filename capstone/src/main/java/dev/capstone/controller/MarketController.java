@@ -5,7 +5,6 @@ import dev.capstone.domain.Guest;
 import dev.capstone.domain.Market;
 import dev.capstone.domain.enumerated.Level;
 import dev.capstone.dto.FoodMenuSaveDTO;
-import dev.capstone.service.FoodMenuService;
 import dev.capstone.service.MarketService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,23 +21,16 @@ import java.util.List;
 public class MarketController {
 
     private final MarketService marketService;
-    private final FoodMenuService foodMenuService;
 
 
     // ========================================================================
 
-    // 매장 등록
-    @PostMapping("/save")
-    public ResponseEntity<String> save(@RequestBody Market market) {
-        Market savedMarket = marketService.save(market);
-        log.info(String.valueOf(savedMarket));
-        return ResponseEntity.ok("200 OK");
-    }
+
 
     // 메뉴 추가
     @PostMapping("/addMenu")
     public ResponseEntity<String> addMenu(@RequestBody FoodMenuSaveDTO requestedInfo) {
-        FoodMenu savedMenu = foodMenuService.save(mappingHelper(requestedInfo));
+        FoodMenu savedMenu = marketService.addMenu(mappingHelper(requestedInfo));
         log.info(String.valueOf(savedMenu));
         return ResponseEntity.ok("200 OK");
     }

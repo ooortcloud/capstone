@@ -33,6 +33,7 @@ public class FoodMenuQueryRepository {
                 .fetch();
     }
 
+    // ========================================================================
     private BooleanExpression equalByMenuType(Integer marketId, String menuType) {
         if(StringUtils.hasText(menuType)) {
             return foodMenu.market.id.eq(marketId)
