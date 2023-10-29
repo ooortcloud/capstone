@@ -22,8 +22,6 @@ public class QOrderList extends EntityPathBase<OrderList> {
 
     public static final QOrderList orderList = new QOrderList("orderList");
 
-    public final dev.capstone.domain.QGuest guest;
-
     public final NumberPath<Integer> id = createNumber("id", Integer.class);
 
     public final dev.capstone.domain.QMarket market;
@@ -48,7 +46,6 @@ public class QOrderList extends EntityPathBase<OrderList> {
 
     public QOrderList(Class<? extends OrderList> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.guest = inits.isInitialized("guest") ? new dev.capstone.domain.QGuest(forProperty("guest"), inits.get("guest")) : null;
         this.market = inits.isInitialized("market") ? new dev.capstone.domain.QMarket(forProperty("market"), inits.get("market")) : null;
     }
 

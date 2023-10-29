@@ -9,5 +9,4 @@ public interface MainUserRepository extends JpaRepository<MainUser, Integer> {
 
     List<MainUser> findAllByName(String name);
 
-
 }

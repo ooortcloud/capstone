@@ -39,9 +39,9 @@ public class GuestService {
         return guestCookieDTO;
     }
 
-    // 장바구니에 담긴 정보 받아오기(수정하는 경우에도 그냥 이거로 덮어씌우자.)
+    // 장바구니에 담기(수정하는 경우에도 그냥 이거로 덮어씌우자.)
     public Map<String, Integer> putShoppingCart(String token, Map<String, Integer> requestedInfo) {
-        shoppingCart.remove(token);
+        shoppingCart.removeByToken(token);
         shoppingCart.put(token, requestedInfo);
 
         return requestedInfo;
@@ -56,7 +56,7 @@ public class GuestService {
 
     // 장바구니 조회
     public Map<String, Integer> getShoppingCart(String id) {
-        Map<String, Integer> sendList = shoppingCart.get(id);
+        Map<String, Integer> sendList = shoppingCart.getByToken(id);
         return sendList;
     }
 
@@ -79,12 +79,12 @@ public class GuestService {
         guest.setNumber_of_people(guestWaitingDTO.getNumberOfPeople());
         guest.setDetails(guestWaitingDTO.getDetails());
         guest.setMarket(market);
-        Integer n = guestQueryRepository.findHighestNumberOfGuestNumber(guestWaitingDTO.getMarket_id()) + 1;
+        Integer n = guestQueryRepository.findHighestNumberOfGnumber(guestWaitingDTO.getMarket_id()) + 1;
         guest.setGnumber(n);
 
         GuestCookieDTO guestCookieDTO = new GuestCookieDTO();
         guestCookieDTO.setToken(String.valueOf(uuid));
-        guestCookieDTO.setGuest_number(n);
+        guestCookieDTO.setGnumber(n);
 
         return guestCookieDTO;
     }

@@ -3,7 +3,6 @@ package dev.capstone.service;
 import dev.capstone.domain.MainUser;
 import dev.capstone.domain.Market;
 import dev.capstone.domain.enumerated.YesOrNo;
-import dev.capstone.repository.querydsl.MainUserQueryRepository;
 import dev.capstone.repository.querydsl.MarketQueryRepository;
 import dev.capstone.repository.springdatajpa.MainUserRepository;
 import dev.capstone.repository.springdatajpa.MarketRepository;
@@ -25,17 +24,21 @@ public class AdminService {
     // ========================================================================
 
 
-
     // ========================================================================
 
     // 전체 계정 조회
-    public List<MainUser> findAll() {
+    public List<MainUser> findAllUsers() {
         return mainUserRepository.findAll();
     }
 
-    // 이름으로 계정 조회
+    // 점주 이름으로 계정 조회
     public List<MainUser> findAllByName(String name) {
         return mainUserRepository.findAllByName(name);
+    }
+
+    // 전체 매장 조회
+    public List<Market> findAllMarkets() {
+        return marketRepository.findAll();
     }
 
     // 미인증된 매장 조회

@@ -28,9 +28,9 @@ public class AdminController {
     // ========================================================================
 
     // 전체 계정 조회
-    @GetMapping("/findAll")
-    public ResponseEntity<String> findAll() {
-        List<MainUser> all = adminService.findAll();
+    @GetMapping("/findAllUsers")
+    public ResponseEntity<String> findAllUsers() {
+        List<MainUser> all = adminService.findAllUsers();
         log.info(all.toString());
         return ResponseEntity.ok("200 OK");
     }

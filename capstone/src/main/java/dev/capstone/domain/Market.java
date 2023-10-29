@@ -24,11 +24,11 @@ public class Market {
     @Enumerated(EnumType.STRING)
     private YesOrNo certified;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private MainUser mainUser;
 
-    @OneToMany(mappedBy = "market")
+    @OneToMany(mappedBy = "market", orphanRemoval = true)
     private List<OrderList> orderLists = new ArrayList<>();
 
     @Column(name = "market_name", nullable = false)

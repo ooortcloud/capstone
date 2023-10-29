@@ -46,10 +46,10 @@ public class MarketController {
 
     // ========================================================================
 
-    // 이름으로 매장 조회
-    @GetMapping("/findByMarketName")
-    public ResponseEntity<String> findByMarketName(@RequestParam String marketName) {
-        List<Market> markets = marketService.findByMarketName(marketName);
+    // 내가 보유한 매장 조희
+    @GetMapping("/findAllByUser_id")
+    public ResponseEntity<String> findAllByUser_id(@RequestParam Integer userId) {
+        List<Market> markets = marketService.findAllByUser_id(userId);
         log.info(markets.toString());
         return ResponseEntity.ok("200 OK");
     }
@@ -63,9 +63,9 @@ public class MarketController {
     }
 
     // 현재 이용 중인 guest들을 이름으로 조회
-    @GetMapping("/findGuestByGuestId")
-    public ResponseEntity<String> findGuestByGuestId(@RequestParam("id") Integer id) {
-        marketService.findGuestByGuestId(id);
+    @GetMapping("/findGuestByGnumber")
+    public ResponseEntity<String> findGuestByGnumber(@RequestParam("gnumber") Integer gnumber) {
+        marketService.findGuestByGnumber(gnumber);
         return ResponseEntity.ok("200 OK");
     }
 
@@ -77,8 +77,8 @@ public class MarketController {
 
     // 정산 처리 -> 서버 상에서 매 시간마다 랜덤 토큰을 만들어서 요청값을 대조시킬 예정 -> validation은 로그인 세션 관리 단계에서 진행
     @PostMapping("/approvedPayment")
-    public ResponseEntity<String> updateDeleteId(@RequestParam("token") String token, @RequestParam("table") Integer table) {
-        marketService.updateDeleteId(token, table);
+    public ResponseEntity<String> updateApprovedByGnumber(@RequestParam("gnumber") Integer gnumber) {
+        marketService.updateApprovedByGnumber(gnumber);
 
         return ResponseEntity.ok("200 OK");
     }

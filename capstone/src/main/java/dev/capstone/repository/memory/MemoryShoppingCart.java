@@ -1,17 +1,17 @@
 package dev.capstone.repository.memory;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
+@Repository
 public class MemoryShoppingCart {
 
     private Map<String, Map<String, Integer>> shoppingCart = new HashMap<>();  // <token 정보, 주문 정보>
 
 
-    public void remove(String token) {
+    public void removeByToken(String token) {
         shoppingCart.remove(token);
     }
 
@@ -19,7 +19,11 @@ public class MemoryShoppingCart {
         shoppingCart.put(token, requestedInfo);
     }
 
-    public Map<String, Integer> get(String id) {
-        return shoppingCart.get(id);
+    public Map<String, Integer> getByToken(String token) {
+        return shoppingCart.get(token);
+    }
+
+    public Map<String, Map<String, Integer>> findAll() {
+        return shoppingCart;
     }
 }

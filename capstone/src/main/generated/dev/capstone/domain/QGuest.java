@@ -34,7 +34,7 @@ public class QGuest extends EntityPathBase<Guest> {
 
     public final NumberPath<Integer> number_of_people = createNumber("number_of_people", Integer.class);
 
-    public final NumberPath<Integer> table = createNumber("table", Integer.class);
+    public final NumberPath<Integer> tableNum = createNumber("tableNum", Integer.class);
 
     public final StringPath token = createString("token");
 

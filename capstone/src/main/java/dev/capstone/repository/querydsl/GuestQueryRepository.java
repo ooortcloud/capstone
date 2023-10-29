@@ -21,12 +21,15 @@ public class GuestQueryRepository {
         this.query = query;
     }
 
-    public void inTable(String token, Integer table) {
+    public void inTable(String token, Integer tableNum) {
         query.update(guest)
                 .where(guest.token.eq(token))
                 .set(Collections.singletonList(guest.waiting), Collections.singletonList(YesOrNo.valueOf("No")))
-                .set(guest.table, table)
+                .set(guest.tableNum, tableNum)
                 .execute();
+
+        em.clear();
+        em.flush();
     }
 
     public void deleteAllByApproved() {
@@ -35,21 +38,25 @@ public class GuestQueryRepository {
                 .execute();
     }
 
-    public void updateApprovedByToken(String token, Integer table) {
+    public void updateApprovedByGnumber(Integer gnumber) {
         query.update(guest)
-                .where(guest.table.eq(table))
+                .where(guest.gnumber.eq(gnumber))
                 .set(Collections.singletonList(guest.approved), Collections.singletonList(YesOrNo.valueOf("Yes")))
                 .execute();
+
+        em.clear();
+        em.flush();
     }
 
-    public Integer findHighestNumberOfGuestNumber(Integer marketID) {
-        List<Integer> getMaxNumberGuest = query.select(guest.guest_number.max())
+    public Integer findHighestNumberOfGnumber(Integer marketID) {
+        List<Integer> getMaxGnumber = query.
+                select(guest.gnumber.max())
                 .from(guest)
                 .fetch();
-        if (getMaxNumberGuest.isEmpty())
+        if (getMaxGnumber.get(0) == null)
             return 0;
         else
-            return getMaxNumberGuest.get(0);
+            return getMaxGnumber.get(0);
     }
 
 }
