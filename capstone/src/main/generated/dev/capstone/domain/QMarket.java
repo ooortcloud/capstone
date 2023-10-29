@@ -24,6 +24,8 @@ public class QMarket extends EntityPathBase<Market> {
 
     public final EnumPath<dev.capstone.domain.enumerated.YesOrNo> certified = createEnum("certified", dev.capstone.domain.enumerated.YesOrNo.class);
 
+    public final ListPath<Guest, QGuest> guests = this.<Guest, QGuest>createList("guests", Guest.class, QGuest.class, PathInits.DIRECT2);
+
     public final NumberPath<Integer> id = createNumber("id", Integer.class);
 
     public final StringPath location = createString("location");

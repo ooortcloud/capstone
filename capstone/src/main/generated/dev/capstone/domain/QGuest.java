@@ -34,6 +34,8 @@ public class QGuest extends EntityPathBase<Guest> {
 
     public final NumberPath<Integer> number_of_people = createNumber("number_of_people", Integer.class);
 
+    public final dev.capstone.domain.jointable.QOrderList orderList;
+
     public final NumberPath<Integer> tableNum = createNumber("tableNum", Integer.class);
 
     public final StringPath token = createString("token");
@@ -59,6 +61,7 @@ public class QGuest extends EntityPathBase<Guest> {
     public QGuest(Class<? extends Guest> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.market = inits.isInitialized("market") ? new QMarket(forProperty("market"), inits.get("market")) : null;
+        this.orderList = inits.isInitialized("orderList") ? new dev.capstone.domain.jointable.QOrderList(forProperty("orderList"), inits.get("orderList")) : null;
     }
 
 }

@@ -17,19 +17,15 @@ import java.util.List;
 public class Guest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "guest_id")
+    @Column(name = "guest_id", nullable = false)
     private Integer id;
 
-    // 지금 외래키 설정이 안 되어 있음.
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)  // 양방향(주인)
     @JoinColumn(name ="market_id", nullable = false)
     private Market market;
 
-    /*
-    @OneToMany(mappedBy = "guest", orphanRemoval = true)
-    private List<OrderList> orderLists = new ArrayList<>();
-
-     */
+    @OneToOne(mappedBy = "guest")  // 양방향(노예)
+    private OrderList orderList;
 
     @Column(nullable = false)
     private Integer number_of_people;
@@ -48,7 +44,7 @@ public class Guest {
     @Column(name = "table_number")
     private Integer tableNum;
 
-    @Column(name = "guest_number", nullable = false)
+    @Column(name ="guest_number", nullable = false)
     private Integer gnumber;  // 토큰 말고 가게에서 실제 발급받은 대기 번호
 
     // commit 직전에 초기값 설정

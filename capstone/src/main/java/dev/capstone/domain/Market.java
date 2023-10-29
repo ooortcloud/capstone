@@ -28,7 +28,10 @@ public class Market {
     @JoinColumn(name = "user_id", nullable = false)
     private MainUser mainUser;
 
-    @OneToMany(mappedBy = "market", orphanRemoval = true)
+    @OneToMany(mappedBy = "market", orphanRemoval = true)  // 양방향(노예)
+    private List<Guest> guests = new ArrayList<>();
+
+    @OneToMany(mappedBy = "market", orphanRemoval = true)  // 양방향(노예)
     private List<OrderList> orderLists = new ArrayList<>();
 
     @Column(name = "market_name", nullable = false)

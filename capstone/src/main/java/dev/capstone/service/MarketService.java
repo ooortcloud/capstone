@@ -85,7 +85,7 @@ public class MarketService {
 
     // 주문 처리
     public void approvedOrder(Integer guestNumber) {
-        // orderListRepository.deleteByGuestGnumber(guestNumber);
+        orderListRepository.deleteByGuestGnumber(guestNumber);
         // 사용자에게 승인되었음을 알림
     }
 
@@ -93,7 +93,7 @@ public class MarketService {
 
     // 주문 거부
     public void rejectOrder(GuestCookieDTO guestCookieDTO) {
-        // orderListRepository.deleteByGuestGnumber(guestCookieDTO.getGnumber());
+        orderListRepository.deleteByGuestGnumber(guestCookieDTO.getGnumber());
         // 사용자에게 거부되었음을 알림
     }
 

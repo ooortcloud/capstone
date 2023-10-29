@@ -22,18 +22,13 @@ public class OrderList {
     @Column(name = "orderList_id")
     private Integer id;
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "market_id")
-    private Market market;
-
-    /*
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "guest_number")
+    @OneToOne(fetch = FetchType.LAZY)  // 양방향(주인)
+    @JoinColumn(name = "gnumber")
     private Guest guest;
 
-     */
-
+    @ManyToOne(fetch = FetchType.LAZY)  // 양방향(주인)
+    @JoinColumn(name = "market_id")
+    private Market market;
 
     @Type(JsonType.class)
     @Column(nullable = false, columnDefinition = "longtext")

@@ -52,7 +52,7 @@ public class OrderListRepositoryTest {
     void createOrderTest() {
         MainUser mainUser = new MainUser(null, "test", "1234", "홍길동", "장막시티", null);
         mainUserRepository.save(mainUser);
-        Market market = new Market(null, YesOrNo.No, mainUser, null, "홍콩반점", "장막시티");
+        Market market = new Market(null, YesOrNo.No, mainUser, null, null, "홍콩반점", "장막시티");
         marketRepository.save(market);
 
         Guest guest = new Guest();
@@ -66,14 +66,12 @@ public class OrderListRepositoryTest {
         mappingHelper(guestWaitingDTO, guest, guest.getToken());
 
         guestRepository.save(guest);
-        // assertThat(guestRepository.findByGnumber(1).getId()).isEqualTo(null);
 
         Map<String, Integer> orderMap = new HashMap<>();
         orderMap.put("핫도그", 3);
         orderMap.put("떡볶이", 2);
-        // guestRepository.findByGnumber(1)
 
-        OrderList orderList = new OrderList(null, market, orderMap);
+        OrderList orderList = new OrderList(null, guestRepository.findByGnumber(1), market, orderMap);
         orderListRepository.save(orderList);
 
         assertThat(orderListRepository.findAll().get(0)).isEqualTo(orderList);
