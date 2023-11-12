@@ -3,17 +3,16 @@ package dev.capstone.domain;
 import dev.capstone.domain.enumerated.YesOrNo;
 import dev.capstone.domain.jointable.OrderList;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+// @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter @Setter
 public class Market {
 
     @Id
@@ -25,7 +24,7 @@ public class Market {
     private YesOrNo certified;
 
     @ManyToOne(fetch = FetchType.LAZY)  // 양방향(주인)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "id", nullable = false)
     private MainUser mainUser;
 
     @OneToMany(mappedBy = "market", orphanRemoval = true)  // 양방향(노예)
@@ -38,7 +37,7 @@ public class Market {
     private List<FoodMenu> foodMenus = new ArrayList<>();
 
     @Column(name = "market_name", nullable = false)
-    private String name;
+    private String marketname;
 
     @Column(name ="market_location", nullable = false)
     private String location;

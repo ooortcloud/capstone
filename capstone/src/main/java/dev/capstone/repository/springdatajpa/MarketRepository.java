@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface MarketRepository extends JpaRepository<Market, Integer> {
 
-    List<Market> findByName(String marketName);
+    List<Market> findByMarketname(String marketname);
 
     List<Market> findByCertified(YesOrNo yesOrNo);
 

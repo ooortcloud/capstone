@@ -4,7 +4,7 @@ import dev.capstone.domain.FoodMenu;
 import dev.capstone.domain.Guest;
 import dev.capstone.domain.Market;
 import dev.capstone.domain.enumerated.Level;
-import dev.capstone.dto.FoodMenuSaveDTO;
+import dev.capstone.dto.FoodMenuDTO;
 import dev.capstone.service.MarketService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +29,7 @@ public class MarketController {
 
     // 메뉴 추가
     @PostMapping("/addMenu")
-    public ResponseEntity<String> addMenu(@RequestBody FoodMenuSaveDTO requestedInfo) {
+    public ResponseEntity<String> addMenu(@RequestBody FoodMenuDTO requestedInfo) {
         FoodMenu savedMenu = marketService.addMenu(mappingHelper(requestedInfo));
         log.info(String.valueOf(savedMenu));
         return ResponseEntity.ok("200 OK");
@@ -88,7 +88,7 @@ public class MarketController {
 
 
 
-    private FoodMenu mappingHelper(FoodMenuSaveDTO requestedInfo) {
+    private FoodMenu mappingHelper(FoodMenuDTO requestedInfo) {
         FoodMenu foodMenu = new FoodMenu();
         foodMenu.setType(Level.valueOf(requestedInfo.getMenu_type()));
         foodMenu.setName(requestedInfo.getMenu_name());

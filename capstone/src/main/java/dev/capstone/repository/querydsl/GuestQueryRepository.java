@@ -28,8 +28,8 @@ public class GuestQueryRepository {
                 .set(guest.tableNum, tableNum)
                 .execute();
 
-        em.clear();
         em.flush();
+        em.clear();
     }
 
     public void deleteAllByApproved() {
@@ -44,8 +44,8 @@ public class GuestQueryRepository {
                 .set(Collections.singletonList(guest.approved), Collections.singletonList(YesOrNo.valueOf("Yes")))
                 .execute();
 
-        em.clear();
         em.flush();
+        em.clear();
     }
 
     public Integer findHighestNumberOfGnumber(Integer marketID) {

@@ -34,7 +34,7 @@ public class QMarket extends EntityPathBase<Market> {
 
     public final QMainUser mainUser;
 
-    public final StringPath name = createString("name");
+    public final StringPath marketname = createString("marketname");
 
     public final ListPath<dev.capstone.domain.jointable.OrderList, dev.capstone.domain.jointable.QOrderList> orderLists = this.<dev.capstone.domain.jointable.OrderList, dev.capstone.domain.jointable.QOrderList>createList("orderLists", dev.capstone.domain.jointable.OrderList.class, dev.capstone.domain.jointable.QOrderList.class, PathInits.DIRECT2);
 

@@ -38,7 +38,7 @@ public class QFoodMenu extends EntityPathBase<FoodMenu> {
 
     public final StringPath name = createString("name");
 
-    public final MapPath<String, Object, SimplePath<Object>> options = this.<String, Object, SimplePath<Object>>createMap("options", String.class, Object.class, SimplePath.class);
+    public final StringPath options = createString("options");
 
     public final NumberPath<Float> price = createNumber("price", Float.class);
 

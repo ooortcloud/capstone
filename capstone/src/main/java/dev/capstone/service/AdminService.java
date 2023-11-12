@@ -33,7 +33,7 @@ public class AdminService {
 
     // 점주 이름으로 계정 조회
     public List<MainUser> findAllByName(String name) {
-        return mainUserRepository.findAllByName(name);
+        return mainUserRepository.findAllByUsername(name);
     }
 
     // 전체 매장 조회

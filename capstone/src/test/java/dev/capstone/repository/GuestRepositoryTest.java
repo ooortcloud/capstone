@@ -57,10 +57,8 @@ public class GuestRepositoryTest {
         Guest guest = new Guest();
         String token = UUID.randomUUID().toString();
         guest.setToken(token);
-        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO();
-        guestWaitingDTO.setNumberOfPeople(1);
-        guestWaitingDTO.setMarket_id(marketRepository.findByName("홍콩반점").get(0).getId());
-        guestWaitingDTO.setDetails("없습니다.");
+        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO(1, "없습니다.",
+                marketRepository.findByMarketname("홍콩반점").get(0).getId());
 
         mappingHelper(guestWaitingDTO, guest, guest.getToken());
 
@@ -96,10 +94,8 @@ public class GuestRepositoryTest {
         Guest guest = new Guest();
         String token = UUID.randomUUID().toString();
         guest.setToken(token);
-        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO();
-        guestWaitingDTO.setNumberOfPeople(1);
-        guestWaitingDTO.setMarket_id(marketRepository.findByName("홍콩반점").get(0).getId());
-        guestWaitingDTO.setDetails("없습니다.");
+        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO(1, "없습니다",
+                marketRepository.findByMarketname("홍콩반점").get(0).getId());
 
         mappingHelper(guestWaitingDTO, guest, guest.getToken());
 
@@ -113,10 +109,8 @@ public class GuestRepositoryTest {
         Guest guest2 = new Guest();
         String token2 = UUID.randomUUID().toString();
         guest2.setToken(token2);
-        GuestWaitingDTO guestWaitingDTO2 = new GuestWaitingDTO();
-        guestWaitingDTO2.setNumberOfPeople(3);
-        guestWaitingDTO2.setMarket_id(marketRepository.findByName("불맛나는떡볶이").get(0).getId());
-        guestWaitingDTO2.setDetails("아이 한 명 있어요!");
+        GuestWaitingDTO guestWaitingDTO2 = new GuestWaitingDTO(3, "아이 한 명 있어요!",
+                marketRepository.findByMarketname("불맛나는떡볶이").get(0).getId());
 
         mappingHelper(guestWaitingDTO2, guest2, guest2.getToken());
 
@@ -141,10 +135,8 @@ public class GuestRepositoryTest {
         Guest guest = new Guest();
         String token = UUID.randomUUID().toString();
         guest.setToken(token);
-        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO();
-        guestWaitingDTO.setNumberOfPeople(1);
-        guestWaitingDTO.setMarket_id(marketRepository.findByName("홍콩반점").get(0).getId());
-        guestWaitingDTO.setDetails("없습니다.");
+        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO(1, "없습니다.",
+                marketRepository.findByMarketname("홍콩반점").get(0).getId());
 
         mappingHelper(guestWaitingDTO, guest, guest.getToken());
 
@@ -158,10 +150,8 @@ public class GuestRepositoryTest {
         Guest guest2 = new Guest();
         String token2 = UUID.randomUUID().toString();
         guest2.setToken(token2);
-        GuestWaitingDTO guestWaitingDTO2 = new GuestWaitingDTO();
-        guestWaitingDTO2.setNumberOfPeople(3);
-        guestWaitingDTO2.setMarket_id(marketRepository.findByName("불맛나는떡볶이").get(0).getId());
-        guestWaitingDTO2.setDetails("아이 한 명 있어요!");
+        GuestWaitingDTO guestWaitingDTO2 = new GuestWaitingDTO(3, "아이 한 명 있어요",
+                marketRepository.findByMarketname("불맛나는떡볶이").get(0).getId());
 
         mappingHelper(guestWaitingDTO2, guest2, guest2.getToken());
 
@@ -183,11 +173,8 @@ public class GuestRepositoryTest {
         Guest guest = new Guest();
         String token = UUID.randomUUID().toString();
         guest.setToken(token);
-        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO();
-        guestWaitingDTO.setNumberOfPeople(1);
-        guestWaitingDTO.setMarket_id(marketRepository.findByName("홍콩반점").get(0).getId());
-        guestWaitingDTO.setDetails("없습니다.");
-
+        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO(1, "업슷ㅂ니다.",
+                marketRepository.findByMarketname("홍콩반점").get(0).getId());
         mappingHelper(guestWaitingDTO, guest, guest.getToken());
 
         guestRepository.save(guest);
@@ -208,10 +195,8 @@ public class GuestRepositoryTest {
         Guest guest = new Guest();
         String token = UUID.randomUUID().toString();
         guest.setToken(token);
-        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO();
-        guestWaitingDTO.setNumberOfPeople(1);
-        guestWaitingDTO.setMarket_id(marketRepository.findByName("홍콩반점").get(0).getId());
-        guestWaitingDTO.setDetails("없습니다.");
+        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO(1, "없습니다.",
+                marketRepository.findByMarketname("홍콩반점").get(0).getId());
 
         mappingHelper(guestWaitingDTO, guest, guest.getToken());
 

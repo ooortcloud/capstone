@@ -41,9 +41,9 @@ public class MainUserService {
     // 계정 수정
     public void update(Integer requestedId, MainUser requestedData) {
          MainUser oldData = mainUserRepository.findById(requestedId).orElseThrow();
-         oldData.setPw(requestedData.getPw());
-         oldData.setName(requestedData.getName());
-         oldData.setUser_residence(requestedData.getUser_residence());
+         oldData.setUserpw(requestedData.getUserpw());
+         oldData.setUsername(requestedData.getUsername());
+         oldData.setUserresidence(requestedData.getUserresidence());
     }
 
     // ========================================================================

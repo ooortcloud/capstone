@@ -80,7 +80,7 @@ public class GuestController {  // 가장 Validation에 신경써야 하는 컨�
     // 인테이블 처리 -> 역시 Validation 관련 문제가 있음. Table에 직접적으로 찍었을 때만 해당 요청이 유효하도록 만들어야 함.
     @PostMapping("/inTable")
     public ResponseEntity<String> inTable(@RequestParam("token") String token, @RequestParam("table") Integer table) {
-        marketService.inTable(token, table);
+        guestService.inTable(token, table);
         return ResponseEntity.ok("200 OK");
     }
 

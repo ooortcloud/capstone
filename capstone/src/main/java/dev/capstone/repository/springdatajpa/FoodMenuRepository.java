@@ -7,5 +7,18 @@ import java.util.List;
 
 public interface FoodMenuRepository extends JpaRepository<FoodMenu, Integer> {
 
+    // ==================================
+
+    // ==================================
     List<FoodMenu> findAllByMarketId(Integer marketId);
+
+    FoodMenu findByName(String name);
+
+    // ==================================
+
+
+    // ==================================
+
+    void deleteByName(String name);
+
 }

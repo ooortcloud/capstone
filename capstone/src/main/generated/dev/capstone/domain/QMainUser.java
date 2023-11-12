@@ -20,17 +20,17 @@ public class QMainUser extends EntityPathBase<MainUser> {
 
     public static final QMainUser mainUser = new QMainUser("mainUser");
 
-    public final StringPath id = createString("id");
+    public final NumberPath<Integer> id = createNumber("id", Integer.class);
 
     public final ListPath<Market, QMarket> markets = this.<Market, QMarket>createList("markets", Market.class, QMarket.class, PathInits.DIRECT2);
 
-    public final StringPath name = createString("name");
+    public final StringPath userid = createString("userid");
 
-    public final StringPath pw = createString("pw");
+    public final StringPath username = createString("username");
 
-    public final NumberPath<Integer> user_id = createNumber("user_id", Integer.class);
+    public final StringPath userpw = createString("userpw");
 
-    public final StringPath user_residence = createString("user_residence");
+    public final StringPath userresidence = createString("userresidence");
 
     public QMainUser(String variable) {
         super(MainUser.class, forVariable(variable));

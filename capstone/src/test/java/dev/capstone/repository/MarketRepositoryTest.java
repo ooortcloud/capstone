@@ -6,13 +6,10 @@ import dev.capstone.domain.enumerated.YesOrNo;
 import dev.capstone.repository.querydsl.MarketQueryRepository;
 import dev.capstone.repository.springdatajpa.MainUserRepository;
 import dev.capstone.repository.springdatajpa.MarketRepository;
-import jakarta.persistence.EntityManager;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -66,7 +63,7 @@ public class MarketRepositoryTest {
         Market market2 = new Market(null, YesOrNo.No, mainUser, null, null, null, "상남자치킨", "축복시티");
         marketRepository.save(market2);
 
-        assertThat(marketRepository.findByName("보영만두").get(0)).isEqualTo(market);
+        assertThat(marketRepository.findByMarketname("보영만두").get(0)).isEqualTo(market);
     }
 
     @Test
@@ -82,7 +79,7 @@ public class MarketRepositoryTest {
         test.add(market);
         test.add(market2);
 
-        assertThat(marketQueryRepository.findMyMarkets(mainUserRepository.findAllByName("홍길동").get(0).getUser_id()))
+        assertThat(marketQueryRepository.findMyMarkets(mainUserRepository.findAllByUsername("홍길동").get(0).getId()))
                 .isEqualTo(test);
     }
 
@@ -112,9 +109,9 @@ public class MarketRepositoryTest {
         Market market = new Market(null, YesOrNo.No, mainUser, null, null, null, "보영만두", "축복시티");
         marketRepository.save(market);
 
-        marketQueryRepository.certifiedSucceed(marketRepository.findByName("보영만두").get(0).getId());
+        marketQueryRepository.certifiedSucceed(marketRepository.findByMarketname("보영만두").get(0).getId());
 
-        assertThat(marketRepository.findByName("보영만두").get(0).getCertified()).isEqualTo(YesOrNo.Yes);
+        assertThat(marketRepository.findByMarketname("보영만두").get(0).getCertified()).isEqualTo(YesOrNo.Yes);
     }
 
     // ========================================================================

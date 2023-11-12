@@ -11,7 +11,6 @@ import dev.capstone.repository.springdatajpa.GuestRepository;
 import dev.capstone.repository.springdatajpa.MainUserRepository;
 import dev.capstone.repository.springdatajpa.MarketRepository;
 import dev.capstone.repository.springdatajpa.OrderListRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,10 +55,8 @@ public class OrderListRepositoryTest {
         Guest guest = new Guest();
         String token = UUID.randomUUID().toString();
         guest.setToken(token);
-        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO();
-        guestWaitingDTO.setNumberOfPeople(1);
-        guestWaitingDTO.setMarket_id(marketRepository.findByName("홍콩반점").get(0).getId());
-        guestWaitingDTO.setDetails("없습니다.");
+        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO(1, "없습니다.",
+                marketRepository.findByMarketname("홍콩반점").get(0).getId());
         mappingHelper(guestWaitingDTO, guest, guest.getToken());
         guestRepository.save(guest);
 
@@ -87,20 +84,16 @@ public class OrderListRepositoryTest {
         Guest guest1 = new Guest();
         String token1 = UUID.randomUUID().toString();
         guest1.setToken(token1);
-        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO();
-        guestWaitingDTO.setNumberOfPeople(1);
-        guestWaitingDTO.setMarket_id(marketRepository.findByName("홍콩반점").get(0).getId());
-        guestWaitingDTO.setDetails("없습니다.");
+        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO(1, "없습니다.",
+                marketRepository.findByMarketname("홍콩반점").get(0).getId());
         mappingHelper(guestWaitingDTO, guest1, guest1.getToken());
         guestRepository.save(guest1);
 
         Guest guest2 = new Guest();
         String token2 = UUID.randomUUID().toString();
         guest2.setToken(token2);
-        GuestWaitingDTO guestWaitingDTO2 = new GuestWaitingDTO();
-        guestWaitingDTO2.setNumberOfPeople(1);
-        guestWaitingDTO2.setMarket_id(marketRepository.findByName("홍콩반점").get(0).getId());
-        guestWaitingDTO2.setDetails("없습니다.");
+        GuestWaitingDTO guestWaitingDTO2 = new GuestWaitingDTO(2, "커플이요.",
+                marketRepository.findByMarketname("홍콩반점").get(0).getId());
         mappingHelper(guestWaitingDTO2, guest2, guest2.getToken());
         guestRepository.save(guest2);
 
@@ -135,10 +128,8 @@ public class OrderListRepositoryTest {
         Guest guest = new Guest();
         String token = UUID.randomUUID().toString();
         guest.setToken(token);
-        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO();
-        guestWaitingDTO.setNumberOfPeople(1);
-        guestWaitingDTO.setMarket_id(marketRepository.findByName("홍콩반점").get(0).getId());
-        guestWaitingDTO.setDetails("없습니다.");
+        GuestWaitingDTO guestWaitingDTO = new GuestWaitingDTO(1, "없습니다.",
+                marketRepository.findByMarketname("홍콩반점").get(0).getId());
         mappingHelper(guestWaitingDTO, guest, guest.getToken());
         guestRepository.save(guest);
 

@@ -30,13 +30,13 @@ public class MarketQueryRepository {
                     .set(market.certified, YesOrNo.Yes)
                     .execute();
 
-            em.clear();
-            em.flush();
+        em.flush();
+        em.clear();
     }
 
-    public List<Market> findMyMarkets(Integer userId) {
+    public List<Market> findMyMarkets(Integer id) {
         return query.selectFrom(market)
-                .where(market.mainUser.user_id.eq(userId))
+                .where(market.mainUser.id.eq(id))
                 .fetch();
     }
 }

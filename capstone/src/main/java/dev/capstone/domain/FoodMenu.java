@@ -5,19 +5,18 @@ import dev.capstone.domain.enumerated.YesOrNo;
 import dev.capstone.domain.jointable.MenuReview;
 import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@Data
+// @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter @Setter
 public class FoodMenu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,8 +50,8 @@ public class FoodMenu {
     private YesOrNo in_stock;
 
     @Type(JsonType.class)
-    @Column(columnDefinition = "longtext")
-    private Map<String, Object> options;
+    @Column(columnDefinition = "longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci")
+    private String options;
 
     @PrePersist
     public void prePersist(){

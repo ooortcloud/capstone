@@ -62,7 +62,10 @@ public class GuestService {
 
     // ========================================================================
 
-
+    // 인테이블 처리 -> validation 처리 필요
+    public void inTable(String token, Integer tableNum) {
+        guestQueryRepository.inTable(token, tableNum);
+    }
 
 
     // ========================================================================
@@ -82,10 +85,7 @@ public class GuestService {
         Integer n = guestQueryRepository.findHighestNumberOfGnumber(guestWaitingDTO.getMarket_id()) + 1;
         guest.setGnumber(n);
 
-        GuestCookieDTO guestCookieDTO = new GuestCookieDTO();
-        guestCookieDTO.setToken(String.valueOf(uuid));
-        guestCookieDTO.setGnumber(n);
-
+        GuestCookieDTO guestCookieDTO = new GuestCookieDTO(String.valueOf(uuid), n);
         return guestCookieDTO;
     }
 }

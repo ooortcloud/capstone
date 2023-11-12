@@ -77,10 +77,6 @@ public class MarketService {
 
     // ========================================================================
 
-    // 인테이블 처리 -> validation 처리 필요
-    public void inTable(String token, Integer tableNum) {
-        guestQueryRepository.inTable(token, tableNum);
-    }
     
     // 정산 처리 = guest 제거 대상
     public void updateApprovedByGnumber(Integer gnumber) {
@@ -89,7 +85,7 @@ public class MarketService {
 
     // 메뉴 수정
     public void updateMenu() {
-        
+
     }
     
     // ========================================================================

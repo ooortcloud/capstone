@@ -1,34 +1,32 @@
 package dev.capstone.domain;
 
-import dev.capstone.domain.enumerated.YesOrNo;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+// @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter @Setter
 public class MainUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer user_id;
+    private Integer id;
 
-    @Column(nullable = false)
-    private String id;
+    @Column(nullable = false, name = "user_id")
+    private String userid;
 
-    @Column(nullable = false)
-    private String pw;
+    @Column(nullable = false, name = "user_pw")
+    private String userpw;
 
     @Column(nullable = false, name = "user_name")
-    private String name;
+    private String username;
 
-    @Column(nullable = false)
-    private String user_residence;
+    @Column(nullable = false, name = "user_residence")
+    private String userresidence;
 
     @OneToMany(mappedBy = "mainUser")  // 양방향(노예)
     private List<Market> markets = new ArrayList<>();
