@@ -2,6 +2,7 @@ package dev.capstone.config;
 
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import dev.capstone.repository.memory.MemoryShoppingCart;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.context.annotation.Bean;
@@ -20,4 +21,9 @@ public class Config {
     public JPAQueryFactory jpaQueryFactory(EntityManager em) {
         return new JPAQueryFactory(em);
     }
+
+//    @Bean
+//    public MemoryShoppingCart memoryShoppingCart() {
+//        return MemoryShoppingCart.getInstance();
+//    }
 }
