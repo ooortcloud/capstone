@@ -7,6 +7,8 @@ import dev.capstone.repository.springdatajpa.MainUserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +21,7 @@ import static org.assertj.core.api.Assertions.*;
 // @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Transactional
 @SpringBootTest
-public class MainUserRepositoryTest {
+class MainUserRepositoryTest {
 
     private final MainUserRepository mainUserRepository;
     private final MainUserQueryRepository mainUserQueryRepository;

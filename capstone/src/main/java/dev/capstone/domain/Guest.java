@@ -3,17 +3,12 @@ package dev.capstone.domain;
 import dev.capstone.domain.enumerated.YesOrNo;
 import dev.capstone.domain.jointable.OrderList;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
-@Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter @Setter
 public class Guest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

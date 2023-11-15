@@ -7,17 +7,17 @@ import dev.capstone.domain.MainUser;
 import dev.capstone.domain.Market;
 import dev.capstone.domain.enumerated.Level;
 import dev.capstone.domain.enumerated.YesOrNo;
-import dev.capstone.domain.jointable.MenuReview;
 import dev.capstone.dto.FoodMenuDTO;
 import dev.capstone.repository.querydsl.FoodMenuQueryRepository;
 import dev.capstone.repository.springdatajpa.FoodMenuRepository;
 import dev.capstone.repository.springdatajpa.MainUserRepository;
 import dev.capstone.repository.springdatajpa.MarketRepository;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -25,7 +25,9 @@ import static org.assertj.core.api.Assertions.*;
 
 @Transactional
 @SpringBootTest
-public class FoodMenuRepositoryTest {
+// @DataJpaTest
+// @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+class FoodMenuRepositoryTest {
     private final MainUserRepository mainUserRepository;
     private final MarketRepository marketRepository;
     private final FoodMenuRepository foodMenuRepository;
@@ -55,7 +57,7 @@ public class FoodMenuRepositoryTest {
         myOption.put("맵기 정도", Arrays.asList("순한맛", "중간맛", "매운맛", "아주 매운맛"));
         String asString = objectMapper.writeValueAsString(myOption);
 
-        FoodMenu foodMenu = new FoodMenu(null, market, null, Level.Best, "", "치즈떡볶이", "우리집 대표 메뉴입니다~!", 7500f,
+        FoodMenu foodMenu = new FoodMenu(null, market, Level.Best, "", "치즈떡볶이", "우리집 대표 메뉴입니다~!", 7500f,
                 0f, YesOrNo.Yes, asString);
         foodMenuRepository.save(foodMenu);
 
@@ -77,10 +79,10 @@ public class FoodMenuRepositoryTest {
         myOption.put("맵기 정도", Arrays.asList("순한맛", "중간맛", "매운맛", "아주 매운맛"));
         String asString = objectMapper.writeValueAsString(myOption);
 
-        FoodMenu foodMenu = new FoodMenu(null, market, null, Level.Best, "", "치즈떡볶이", "우리집 대표 메뉴입니다~!", 7500f,
+        FoodMenu foodMenu = new FoodMenu(null, market, Level.Best, "", "치즈떡볶이", "우리집 대표 메뉴입니다~!", 7500f,
                 0f, YesOrNo.Yes, asString);
         foodMenuRepository.save(foodMenu);
-        FoodMenu foodMenu2 = new FoodMenu(null, market, null, Level.Recommend, "", "국물떡볶이", "추천 메뉴~!", 7000f,
+        FoodMenu foodMenu2 = new FoodMenu(null, market, Level.Recommend, "", "국물떡볶이", "추천 메뉴~!", 7000f,
                 0f, YesOrNo.Yes, asString);
         foodMenuRepository.save(foodMenu2);
 
@@ -99,7 +101,7 @@ public class FoodMenuRepositoryTest {
         ObjectMapper objectMapper = new ObjectMapper();
         myOption.put("맵기 정도", Arrays.asList("순한맛", "중간맛", "매운맛", "아주 매운맛"));
         String asString = objectMapper.writeValueAsString(myOption);
-        FoodMenu foodMenu = new FoodMenu(null, market, null, Level.Best, "", "치즈떡볶이", "우리집 대표 메뉴입니다~!", 7500f,
+        FoodMenu foodMenu = new FoodMenu(null, market, Level.Best, "", "치즈떡볶이", "우리집 대표 메뉴입니다~!", 7500f,
                 0f, YesOrNo.Yes, asString);
         foodMenuRepository.save(foodMenu);
 
@@ -128,7 +130,7 @@ public class FoodMenuRepositoryTest {
         ObjectMapper objectMapper = new ObjectMapper();
         myOption.put("맵기 정도", Arrays.asList("순한맛", "중간맛", "매운맛", "아주 매운맛"));
         String asString = objectMapper.writeValueAsString(myOption);
-        FoodMenu foodMenu = new FoodMenu(null, market, null, Level.Best, "", "치즈떡볶이", "우리집 대표 메뉴입니다~!", 7500f,
+        FoodMenu foodMenu = new FoodMenu(null, market, Level.Best, "", "치즈떡볶이", "우리집 대표 메뉴입니다~!", 7500f,
                 0f, YesOrNo.Yes, asString);
         foodMenuRepository.save(foodMenu);
 
@@ -138,9 +140,8 @@ public class FoodMenuRepositoryTest {
                 "이번에 새롭게 리뉴얼했습니다!", 10000f, 1000f, asString);
         foodMenuQueryRepository.updateMenu(foodMenuDTO);
 
-        List<MenuReview> emptyList = new ArrayList<>();
         assertThat(foodMenuRepository.findAll().get(0))
-                .usingRecursiveComparison().isEqualTo(new FoodMenu(foodMenuRepository.findAll().get(0).getId(), market, emptyList, Level.Recommend, "", "더블치즈떡볶이"
+                .usingRecursiveComparison().isEqualTo(new FoodMenu(foodMenuRepository.findAll().get(0).getId(), market, Level.Recommend, "", "더블치즈떡볶이"
                         , "이번에 새롭게 리뉴얼했습니다!", 10000f, 1000f, YesOrNo.Yes, asString));
     }
 
@@ -158,7 +159,7 @@ public class FoodMenuRepositoryTest {
         myOption.put("맵기 정도", Arrays.asList("순한맛", "중간맛", "매운맛", "아주 매운맛"));
         String asString = objectMapper.writeValueAsString(myOption);
 
-        FoodMenu foodMenu = new FoodMenu(null, market, null, Level.Best, "", "치즈떡볶이", "우리집 대표 메뉴입니다~!", 7500f,
+        FoodMenu foodMenu = new FoodMenu(null, market, Level.Best, "", "치즈떡볶이", "우리집 대표 메뉴입니다~!", 7500f,
                 0f, YesOrNo.Yes, asString);
         foodMenuRepository.save(foodMenu);
 

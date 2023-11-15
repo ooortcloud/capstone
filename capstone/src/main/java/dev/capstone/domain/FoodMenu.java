@@ -2,7 +2,6 @@ package dev.capstone.domain;
 
 import dev.capstone.domain.enumerated.Level;
 import dev.capstone.domain.enumerated.YesOrNo;
-import dev.capstone.domain.jointable.MenuReview;
 import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,7 +9,6 @@ import org.hibernate.annotations.Type;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 // @Data
 @Entity
@@ -26,9 +24,6 @@ public class FoodMenu {
     @ManyToOne(fetch = FetchType.LAZY)  // 양방향(주인)
     @JoinColumn(name = "market_id")
     private Market market;
-
-    @OneToMany(mappedBy = "foodMenu")  // 양방향(노예)
-    private List<MenuReview> menuReviews = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     @Column(name = "menu_type")

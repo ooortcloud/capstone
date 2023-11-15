@@ -34,8 +34,6 @@ public class QFoodMenu extends EntityPathBase<FoodMenu> {
 
     public final QMarket market;
 
-    public final ListPath<dev.capstone.domain.jointable.MenuReview, dev.capstone.domain.jointable.QMenuReview> menuReviews = this.<dev.capstone.domain.jointable.MenuReview, dev.capstone.domain.jointable.QMenuReview>createList("menuReviews", dev.capstone.domain.jointable.MenuReview.class, dev.capstone.domain.jointable.QMenuReview.class, PathInits.DIRECT2);
-
     public final StringPath name = createString("name");
 
     public final StringPath options = createString("options");
