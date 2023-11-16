@@ -41,7 +41,7 @@ public class MarketController {
     // 내가 보유한 매장 조희
     @GetMapping("/findAllByUser_id")
     public ResponseEntity<String> findAllByUser_id(@RequestParam Integer userId) {
-        List<Market> markets = marketService.findAllByUser_id(userId);
+        List<Market> markets = marketService.findAllMarketByUserid(userId);
         log.info(markets.toString());
         return ResponseEntity.ok("200 OK");
     }

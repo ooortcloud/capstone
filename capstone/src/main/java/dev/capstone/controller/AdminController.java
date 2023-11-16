@@ -38,7 +38,7 @@ public class AdminController {
     // 이름으로 계정 조회
     @GetMapping("/findAllByName")
     public ResponseEntity<String> findAllByName(@RequestParam("name") String name) {
-        List<MainUser> foundUsers = adminService.findAllByName(name);
+        List<MainUser> foundUsers = adminService.findAllByUsername(name);
         log.info(String.valueOf(foundUsers));
         return ResponseEntity.ok("200 OK");
     }
@@ -46,7 +46,7 @@ public class AdminController {
     // 인증 || 미인증된 매장 조회
     @GetMapping("/findByCertified")
     public ResponseEntity<String> findByCertified(@RequestParam("yn") YesOrNo yesOrNo) {
-        List<Market> markets = adminService.findByCertified(yesOrNo);
+        List<Market> markets = adminService.findByCertifiedMarket(yesOrNo);
         log.info(markets.toString());
         return ResponseEntity.ok("200 OK");
     }
